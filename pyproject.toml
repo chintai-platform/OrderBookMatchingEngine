@@ -35,11 +35,6 @@ dev = [
     "mypy",
     "pre-commit",
 ]
-build = [
-    "wheel",
-    "build",
-    "twine"
-]
 
 [build-system]
 requires = [

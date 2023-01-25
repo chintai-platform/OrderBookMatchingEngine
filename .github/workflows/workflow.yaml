@@ -40,33 +40,23 @@ jobs:
       - name: Run pre-commit
         run: pre-commit run -v --show-diff-on-failure
 
-  build-wheels:
+  build:
     name: Build wheels
     runs-on: [self-hosted,nodejs]
     steps:
       - uses: actions/checkout@v3
-      - name: Build wheels
-        uses: pypa/cibuildwheel@v2.12.0
+      - name: Install dependencies
+        run: pip install -e .[build]
+      - name: Build wheels and source distribution
+        run: python -m build --wheel --sdist --outdir dist
       - uses: actions/upload-artifact@v3
         with:
-          path: ./wheelhouse/*.whl
-
-  build-sdist:
-    name: Build source distribution
-    runs-on: [self-hosted,nodejs]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build sdist
-        run: |
-          python -m pip install build
-          python -m build --sdist
-      - uses: actions/upload-artifact@v3
-        with:
-          path: ./dist/*.tar.gz
+          name: wheels
+          path: dist/*
 
   upload-pypi:
     name: Upload to PyPi
-    needs: [build-wheels, build-sdist]
+    needs: [build]
     runs-on: [self-hosted,nodejs]
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     steps:
@@ -80,10 +70,11 @@ jobs:
           password: ${{ secrets.TEST_PYPI_TOKEN }}
           # to test:
           repository_url: https://test.pypi.org/legacy/
+          packages_dir: dist/
 
   release:
     name: Release on GitHub
-    needs: [build-wheels, build-sdist]
+    needs: [build]
     runs-on: [self-hosted,nodejs]
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
     steps:

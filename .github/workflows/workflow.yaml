@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install dependencies
-        run: pip install -e .[build]
+        run: pip install .[build]
       - name: Build wheels and source distribution
         run: python -m build --wheel --sdist --outdir dist
       - uses: actions/upload-artifact@v3

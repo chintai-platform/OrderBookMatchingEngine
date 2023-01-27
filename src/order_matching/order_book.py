@@ -64,8 +64,8 @@ class OrderBook:
             case Side.BUY:
                 return self.offers
 
-    def get_subset(self, expiration_timestamp: pd.Timestamp) -> Orders:
-        return self.orders_by_expiration[expiration_timestamp]
+    def get_subset(self, expiration: pd.Timestamp) -> Orders:
+        return self.orders_by_expiration[expiration]
 
     def matching_order_exists(self, incoming_order: Order) -> bool:
         match incoming_order.side:

@@ -14,10 +14,11 @@ from order_matching.random import get_faker
 class TestMatchingEngine:
     def test_matching_with_no_orders(self) -> None:
         matching_engine = MatchingEngine()
-        matching_engine.match(timestamp=pd.Timestamp.now())
+        executed_trades = matching_engine.match(timestamp=pd.Timestamp.now())
 
         assert matching_engine.unprocessed_orders.bids == dict()
         assert matching_engine.unprocessed_orders.offers == dict()
+        assert executed_trades.trades == []
 
     def test_matching_with_complete_order(self) -> None:
         order_book = MatchingEngine()

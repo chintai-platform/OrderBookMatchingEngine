@@ -16,7 +16,7 @@ class Order:
     order_id: str
     trader_id: str
     execution: Execution
-    expiration: pd.Timestamp = None
+    expiration: pd.Timestamp = pd.NaT
     status: Status = Status.OPEN
     price_number_of_digits: int = 1
 

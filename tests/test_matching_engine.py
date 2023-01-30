@@ -717,7 +717,8 @@ class TestMatchingEngine:
         matching_engine = MatchingEngine()
 
         timestamp = pd.Timestamp.now()
-        expiration = timestamp + pd.Timedelta(1, unit="D")
+        timedelta = pd.Timedelta(1, unit="D")
+        expiration = timestamp + timedelta
         order = LimitOrder(
             side=Side.BUY,
             price=1.2,
@@ -728,6 +729,11 @@ class TestMatchingEngine:
             trader_id="x",
         )
         matching_engine.match(orders=Orders([order]), timestamp=timestamp)
+
+        assert matching_engine.unprocessed_orders.bids == {order.price: Orders([order])}
+        assert matching_engine.unprocessed_orders.offers == dict()
+
+        matching_engine.match(timestamp=timestamp + timedelta / 2)
 
         assert matching_engine.unprocessed_orders.bids == {order.price: Orders([order])}
         assert matching_engine.unprocessed_orders.offers == dict()

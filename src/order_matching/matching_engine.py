@@ -1,3 +1,5 @@
+from typing import Optional
+
 import pandas as pd
 
 from order_matching.executed_trades import ExecutedTrades
@@ -33,14 +35,14 @@ class MatchingEngine:
 trade_id='c4da537c-1651-4dae-8486-7db30d67b366', timestamp=Timestamp('2023-01-02 00:00:00'))]
     """
 
-    def __init__(self, seed: int = None) -> None:
+    def __init__(self, seed: Optional[int] = None) -> None:
         self._seed = seed
         self._faker = get_faker(seed=seed)
         self._queue = Orders()
         self.unprocessed_orders = OrderBook()
         self._timestamp: pd.Timestamp | None = None
 
-    def match(self, timestamp: pd.Timestamp, orders: Orders = None) -> ExecutedTrades:
+    def match(self, timestamp: pd.Timestamp, orders: Optional[Orders] = None) -> ExecutedTrades:
         """Match incoming orders in price-time priority.
 
         Parameters

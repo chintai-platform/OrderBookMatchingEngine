@@ -1,5 +1,6 @@
 from pandera import Field, SchemaModel
-from pandera.typing import DateTime, Series
+from pandera.typing import Series
+from pandera.typing.common import DateTime
 
 from order_matching.execution import Execution
 from order_matching.side import Side

@@ -1,8 +1,10 @@
+from typing import Optional
+
 from faker import Faker
 from numpy.random import Generator, default_rng
 
 
-def get_random_generator(seed: int = None) -> Generator:
+def get_random_generator(seed: Optional[int] = None) -> Generator:
     """Get numpy random number generator.
 
     Parameters
@@ -17,7 +19,7 @@ def get_random_generator(seed: int = None) -> Generator:
     return default_rng(seed=seed)
 
 
-def get_faker(seed: int = None) -> Faker:
+def get_faker(seed: Optional[int] = None) -> Faker:
     """Get Faker random generator.
 
     Parameters

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict
-from typing import Generator, Iterator, Sequence
+from typing import Generator, Iterator, Optional, Sequence
 
 import pandas as pd
 from pandera.typing import DataFrame
@@ -18,7 +18,7 @@ class Orders:
     orders
     """
 
-    def __init__(self, orders: Sequence[Order] = None) -> None:
+    def __init__(self, orders: Optional[Sequence[Order]] = None) -> None:
         self.orders = list() if orders is None else list(orders)
         self._sort_orders_inplace()
 

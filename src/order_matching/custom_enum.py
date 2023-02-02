@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class CustomEnum(Enum):
+class CustomEnum(int, Enum):
     """Custom enumerator.
 
     Used across the library as a base class for enumeration objects.

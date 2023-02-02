@@ -71,6 +71,11 @@ ignore = ["D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107", "D213"
 [tool.ruff.pydocstyle]
 convention = "numpy"
 
+[tool.pyright]
+venvPath = "."
+venv = "venv"
+include = ["src", "tests"]
+
 [tool.mypy]
 ignore_missing_imports = true
 install_types = true

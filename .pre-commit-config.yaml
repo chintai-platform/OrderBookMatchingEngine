@@ -9,9 +9,14 @@ repos:
 - repo: https://github.com/charliermarsh/ruff-pre-commit
   rev: v0.0.239
   hooks:
-    - id: ruff
+  - id: ruff
 
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v0.991
   hooks:
-  -   id: mypy
+  - id: mypy
+
+- repo: https://github.com/RobertCraigie/pyright-python
+  rev: v1.1.292
+  hooks:
+  - id: pyright

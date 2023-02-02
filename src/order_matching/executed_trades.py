@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import asdict
+from typing import Optional
 
 import pandas as pd
 from pandera.typing import DataFrame
@@ -21,7 +22,7 @@ class ExecutedTrades:
         Trades
     """
 
-    def __init__(self, trades: list[Trade] = None) -> None:
+    def __init__(self, trades: Optional[list[Trade]] = None) -> None:
         self._trades: dict[pd.Timestamp, list[Trade]] = defaultdict(list)
         if trades:
             self.add(trades=trades)

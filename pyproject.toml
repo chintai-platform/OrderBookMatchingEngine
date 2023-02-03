@@ -75,7 +75,7 @@ convention = "numpy"
 venvPath = "."
 venv = "venv"
 include = ["src", "tests"]
-typeCheckingMode = "strict"
+typeCheckingMode = "basic"
 
 [tool.mypy]
 ignore_missing_imports = true

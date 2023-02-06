@@ -57,6 +57,11 @@ pip install order-matching
 
 ```
 
+## Related Projects
+
+- [bmoscon/orderbook](https://github.com/bmoscon/orderbook)
+- [Kautenja/limit-order-book](https://github.com/Kautenja/limit-order-book)
+
 ## Contribute
 
 Create a virtual environment and activate it:

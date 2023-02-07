@@ -4,7 +4,8 @@
 pytest tests/test_matching_engine.py::TestMatchingEngine::test_matching_with_benchmark \
   --dist no \
   --benchmark-enable \
-  --benchmark-autosave
+  --benchmark-autosave \
+  --benchmark-json=benchmark.json
 
 # Compare saved results
 pytest-benchmark compare

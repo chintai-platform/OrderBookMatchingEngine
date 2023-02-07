@@ -25,7 +25,7 @@ jobs:
           cache: "pip"
           cache-dependency-path: pyproject.toml
       - name: Install dependencies
-        run: pip install .[test]
+        run: pip install -e .[test]
       - name: Run test suite
         run: pytest --cov=order_matching
 
@@ -42,7 +42,7 @@ jobs:
           cache: "pip"
           cache-dependency-path: pyproject.toml
       - name: Install dependencies
-        run: pip install .[test]
+        run: pip install -e .[test]
       - name: Run benchmark
         run: pytest --cov=trading_simulation --benchmark-enable --benchmark-json=benchmark.json
       - name: Download previous benchmark data

@@ -2,6 +2,8 @@
 .mypy_cache/
 .pytest_cache/
 .ruff_cache/
+.benchmarks/
+benchmark.json
 __pycache__/*
 venv/
 site/

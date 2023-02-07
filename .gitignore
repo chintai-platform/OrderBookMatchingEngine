@@ -4,6 +4,7 @@
 .ruff_cache/
 .benchmarks/
 benchmark.json
+benchmark_history.svg
 __pycache__/*
 venv/
 site/

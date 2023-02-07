@@ -8,4 +8,4 @@ pytest tests/test_matching_engine.py::TestMatchingEngine::test_matching_with_ben
   --benchmark-json=benchmark.json
 
 # Compare saved results
-pytest-benchmark compare
+pytest-benchmark compare --histogram=benchmark_history
